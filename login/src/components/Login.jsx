@@ -1,4 +1,5 @@
 import React from 'react'
+import {auth} from '../firebase'
 
 const Login = () => {
 
@@ -25,8 +26,27 @@ const Login = () => {
             return
         }
         setError(null)
-        console.log('pasando todas las validaciones')
+        //console.log('pasando todas las validaciones')
+        if(esRegistro){
+            registrar()
+        }
     }
+
+    const registrar = React.useCallback(async() => {
+
+        try {
+            const res = await auth.createUserWithEmailAndPassword(email, pass)
+            console.log(res)
+        } catch (error) {
+            console.log(error);
+            if(error.code === 'auth/invalid-email'){
+                setError('Email no valido')           
+            }
+            if(error.code === 'auth/email-already-in-use'){
+                setError('email ya utilizado')
+            }            
+        }
+    },[email, pass])
 
     return (
         <div className="mt-5">
