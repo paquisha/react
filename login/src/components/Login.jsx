@@ -41,7 +41,7 @@ const Login = (props) => {
             setEmail('')
             setPass('')
             setError(null)
-            console.log(res.user);
+            //console.log(res.user);
             props.history.push('/admin')                        
         } catch (error) {
             console.log(error);
@@ -72,7 +72,7 @@ const Login = (props) => {
             setEmail('')
             setPass('')
             setError(null)
-            console.log(res.user)
+            //console.log(res.user)
             props.history.push('/admin')
         } catch (error) {
             console.log(error);
