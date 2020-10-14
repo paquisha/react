@@ -13,6 +13,7 @@ const dataInicial = {
 //types
 const OBTENER_POKEMONES_EXITO = 'OBTENER_POKEMONES_EXITO'
 const SIGUIENTE_POKEMONES_EXITO = 'SIGUIENTE_POKEMONES_EXITO'
+const POKE_INFO_EXITO = 'POKE_INFO_EXITO'
 
 //reducer
 export default function pokeReducer(state = dataInicial, action){
@@ -20,13 +21,52 @@ export default function pokeReducer(state = dataInicial, action){
         case OBTENER_POKEMONES_EXITO:
             return{...state, ...action.payload}
         case SIGUIENTE_POKEMONES_EXITO:
-            return {...state, ...action.payload}            
+            return {...state, ...action.payload}
+        case POKE_INFO_EXITO:
+            return {...state, unPokemon: action.payload}            
         default:
             return state
     }
 }
 
 //acciones
+
+export const unPokeDetalleAccion = (url) => async (dispatch) =>{
+
+    if(url === undefined){
+        url = 'https://pokeapi.co/api/v2/pokemon/141/'
+    }
+
+    if(localStorage.getItem(url)){
+        dispatch({
+            type: POKE_INFO_EXITO,
+            payload: JSON.parse(localStorage.getItem(url))
+        })
+        return
+    }
+
+    try {
+        const res = await axios.get(url)
+        dispatch({
+            type: POKE_INFO_EXITO,
+            payload: {
+                nombre: res.data.name,
+                ancho: res.data.weigth,
+                alto: res.data.height,
+                foto: res.data.sprites.front_default
+            }
+        })
+        localStorage.setItem(url, JSON.stringify({
+            nombre: res.data.name,
+            ancho: res.data.weigth,
+            alto: res.data.height,
+            foto: res.data.sprites.front_default
+        }))               
+    } catch (error) {        
+        console.log(error)
+    }
+}
+
 export const obtenerPokemonesAccion = () => async (dispatch, getState) =>{
 
     if(localStorage.getItem('offset=0')){
