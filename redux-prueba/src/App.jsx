@@ -3,6 +3,7 @@ import React from 'react';
 import Pokemones from './components/Pokemones';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
+import Perfil from './components/Perfil';
 
 import {
   BrowserRouter as Router,
@@ -13,6 +14,7 @@ import {
 
 // Firebase
 import {auth} from './firebase'
+
 
 function App() {
 
@@ -57,6 +59,7 @@ function App() {
         <Switch>
           <RutaProtegida component={Pokemones} path="/" exact/>
           {/* <Route component={Pokemones} path="/" exact/> */}
+          <RutaProtegida component={Perfil} path="/perfil" exact/>
           <Route component={Login} path="/login" exact/>
         </Switch>
       </div>
