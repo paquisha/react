@@ -1,27 +1,31 @@
 const express = require('express');
 require('dotenv').config();
+const cors = require('cors');
 const { dbConnection } = require('./database/config');
 
-//crear servidor de express
+// Crear el servidor de express
 const app = express();
 
-//mongo
+// Base de datos
 dbConnection();
 
-//directorio publico
+// CORS
+app.use(cors())
+
+// Directorio Público
 app.use( express.static('public') );
 
-//Lectura y parseo de body
+// Lectura y parseo del body
 app.use( express.json() );
 
-//rutas
-//TODO: auth // crear, login, renew
+// Rutas
 app.use('/api/auth', require('./routes/auth') );
-//TODO: crud: eventos
+app.use('/api/events', require('./routes/events') );
 
 
 
-//escuchar peticiones
-app.listen( 4000, () =>{
-    console.log(`servidor corriendo ${4000}`);
+
+// Escuchar peticiones
+app.listen( process.env.PORT, () => {
+    console.log(`Servidor corriendo en puerto ${ process.env.PORT }`);
 });
