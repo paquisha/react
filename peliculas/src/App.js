@@ -1,14 +1,15 @@
-import { Route, Switch } from "react-router";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ListadoPeliculas from "./ListadoPeliculas";
-
 
 function App() {
   return (
-    <Switch>
-      <Route path="/">
-        <ListadoPeliculas />
-      </Route>
-    </Switch>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/">
+          <ListadoPeliculas />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
