@@ -60,6 +60,11 @@ const Register = () => {
     }
   });
 
+  const registrarUsuario = (e) => {
+    debugger
+    console.log('vamos a enviar algo');
+  }
+
   return (
     <>
       <Head>
@@ -193,6 +198,7 @@ const Register = () => {
             )}
             <Box sx={{ py: 2 }}>
               <Button
+                onClick={registrarUsuario()}
                 color="primary"
                 disabled={formik.isSubmitting}
                 fullWidth
