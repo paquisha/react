@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const submit = (e) =>{
+    e.preventDefault();
+    const data = Array.from(new FormData(e.target));
+    console.log(Object.fromEntries(data));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <form onSubmit={submit} >
+        <div>
+          <span>
+            prueba
+          </span>
+          <input name='campo' />
+        </div>
+        <input name='campo-2' />
+        <input type='submit' value='Enviar' />
+      </form>
     </div>
   );
 }
