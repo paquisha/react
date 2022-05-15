@@ -6,6 +6,7 @@ import FormularioNumeros from './components/FormularioNumeros';
 import ListadoResultados from './components/ListadoResultados';
 import { useState } from 'react';
 import CoordenadaFlecha from './components/CoordenadaFlecha';
+import EjercicioApi from './components/EjercicioApi';
 
 function App() {
 
@@ -54,6 +55,11 @@ function App() {
         <div className='col-md-6'>
           {visible ? <CoordenadaFlecha /> : <p>se oculto la coordenada</p>}
           <button className='btn btn-primary' onClick={ocultar}>Ocultar</button>
+        </div>
+      </div>
+      <div className='row mt-3'>
+        <div className='col-md-6'>
+          <EjercicioApi />
         </div>
       </div>
     </div>
