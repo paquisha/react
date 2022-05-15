@@ -1,26 +1,24 @@
 import './App.css';
+import Primero from './components/Primero';
+import Segundo from './components/Segundo';
+import Tercero from './components/Tercero';
 
 function App() {
-    const presion = (e) =>{
-        e.preventDefault();
-        const valor1 = parseInt(e.target.valor1.value, 10);
-        const valor2 = parseInt(e.target.valor2.value, 10);
-        const suma = valor1 + valor2;
-        alert('La suma es: ' + suma);
-    }
   return (
     <div className="App">
-      <form onSubmit={presion}>
-        <p> Ingrese valor:
-         <input type="number" name="valor1" />
-        </p>
-        <p>Ingrese segundo valor:
-         <input type="number" name="valor2" />
-        </p>
-        <p>
-         <input type="submit" value="Sumar" />
-        </p>
-      </form>
+      <div className='row'>
+        <div className='col-md-6'>
+          <Primero />
+        </div>
+        <div className='col-md-6'>
+          <Segundo />
+        </div>
+      </div>
+      <div className='row mt-3'>
+        <div className='col-md-12'>
+          <Tercero />
+        </div>
+      </div>
     </div>
   );
 }
