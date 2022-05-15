@@ -17,7 +17,7 @@ export default function Segundo() {
       <h5>Segundo Ejercicio</h5>
       <div>
         <label>Numero aleatorio:</label>
-        {numeros.map(numero => (<label>{numero},</label>))}
+        {numeros.map(numero => (<li>{numero},</li>))}
       </div>
       <div>
         <button className='btn btn-warning mt-2' onClick={generarAleatorio} >Generar Numero</button>

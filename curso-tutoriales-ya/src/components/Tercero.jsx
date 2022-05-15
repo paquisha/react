@@ -20,12 +20,17 @@ export default function Tercero() {
     }
   ]);
 
-  const eliminarUltimaFila = () =>{
+  /*const eliminarUltimaFila = () =>{
     if(articulos.length > 0){
       const temporales = Array.from(articulos);
       temporales.pop();
       setArticulos(temporales);
     }
+  }*/
+
+  const borrar = (cod) => {
+    const temporal = articulos.filter((articulo) => articulo.codigo !== cod);
+    setArticulos(temporal);
   }
 
   return (
@@ -46,14 +51,14 @@ export default function Tercero() {
                 <td >{articulo.codigo}</td>
                 <td >{articulo.descripcion}</td>
                 <td >{articulo.precio}</td>
+                <td>
+                  <button className='btn btn-danger' onClick={() => borrar(articulo.codigo)}>Eliminar</button>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
-      <div>
-        <button className='btn btn-danger' onClick={eliminarUltimaFila}>Eliminar &uacute;ltima fila</button>
-      </div>
     </div>
   )
 }
